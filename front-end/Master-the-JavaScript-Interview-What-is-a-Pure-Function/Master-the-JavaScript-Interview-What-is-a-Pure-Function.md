@@ -27,10 +27,15 @@ A **function** is a process which takes some input, called **arguments**, and pr
 - **I/O:** Some functions exist to communicate with other parts of the system, such as the screen, storage, system logs, or network.
 
 #### Mapping
+#### 映射
 
 Pure functions are all about mapping. Functions map input arguments to return values, meaning that for each set of inputs, there exists an output. A function will take the inputs and return the corresponding output.
 
+纯函数都是关于映射的。函数映射指的是输入参数会返回新的值，这意味着对于每一组输入的参数，都有对应的输出。一个函数接收输入并返回相应的输出。
+
 `Math.max()` takes numbers as arguments and returns the largest number:
+
+`Math.max()` 函数接收数字作为参数并返回一个最大的数字：
 
 ```
 Math.max(2, 8, 5); // 8
@@ -38,27 +43,45 @@ Math.max(2, 8, 5); // 8
 
 In this example, 2, 8, & 5 are arguments. They're values passed into the function.
 
+在这个例子中，2、8 和 5 都是参数。他们是被传入函数的值。
+
 `Math.max()` is a function that takes any number of arguments and returns the largest argument value. In this case, the largest number we passed in was 8, and that's the number that got returned.
+
+`Math.max()` 函数接收任意数字作为参数并返回一个最大的数字。这个例子中，我们传入的最大数字是 8，也就是函数返回的那个数字。
 
 Functions are really important in computing and math. They help us process data in useful ways. Good programmers give functions descriptive names so that when we see the code, we can see the function names and understand what the function does.
 
+函数在计算和数学中都非常重要。它们以一种更有效的方式来帮助我们来处理数据。优秀的程序员会给函数取一个有意义的名字，这样我们看到函数名的时候就可以知道这个函数的作用是什么了。
+
 Math has functions, too, and they work a lot like functions in JavaScript. You've probably seen functions in algebra. They look something like this:
+
+数学中也有函数，它们的工作原理和 JavaScript 中的函数很像。你可能在代数学中看过函数。他们看起来像下面的例子一样：
 
 f(x) = 2x
 
 Which means that we're declaring a function called f and it takes an argument called x and multiplies x by 2.
 
+这意思是我们声明了一个叫 `f` 的函数同时接收了一个叫 `x` 的参数并且返回的值是 `x` 乘以 2。
+
 To use this function, we simply provide a value for x:
+
+要使用这个函数，我们可以简单的船体一个值给 `x`：
 
 f(2)
 
 In algebra, this means exactly the same thing as writing:
 
+在代数学中，这意味着完全等价于下面写的值：
+
 4
 
 So any place you see f(2) you can substitute 4.
 
+所以你在任何地方看到 `f(2)` 你都可以用 4 来代替。
+
 Now let's convert that function to JavaScript:
+
+现在让我们回到 JavaScript 中的函数：
 
 ```
 const double = x => x * 2;
@@ -66,29 +89,50 @@ const double = x => x * 2;
 
 You can examine the function's output using `console.log()`:
 
+你可以用 `console.log()` 来查看函数的输出：
+
 ```
 console.log( double(5) ); // 10
 ```
 
 Remember when I said that in math functions, you could replace `f(2)` with `4`? In this case, the JavaScript engine replaces `double(5)` with the answer, `10`.
 
+记住，当我说数学中的函数时，你可以用 `f(2)` 来代替 4。在这种情况下，JavaScript 引擎会把 `double(5)` 替代成 10。
+
 So, `console.log( double(5) );` is the same as `console.log(10);`
+
+所以，`console.log( double(5) );` 等价于  `console.log(10);`。
 
 This is true because `double()` is a pure function, but if `double()` had side-effects, such as saving the value to disk or logging to the console, you couldn't simply replace `double(5)` with 10 without changing the meaning.
 
+这样是正确的，因为 `double()` 是一个纯函数，但是如果 `double()` 有副作用，比如该函数把值保存到了磁盘或输出到了控制台，你不可以在没有改变含义的情况下简单地把 `double(5)` 替换成 10。
+
 If you want referential transparency, you need to use pure functions.
 
+*如果你想透明地引用，你需要使用纯函数。*
+
 #### Pure Functions
+#### 纯函数
 
 A **pure function** is a function which:
+
+**纯函数**的特点：
 
 - Given the same input, will always return the same output.
 - Produces no side effects.
 - Relies on no external state.
 
+- 对于给定相同的输入，总是返回相同的输出。
+- 不会产生副作用。
+- 不依赖于外部状态。
+
 I recommend that you favor pure functions. Meaning, if it is practical to implement a program requirement using pure functions, you should use them over other options. Pure functions take some input and return some output based on that input. They are the simplest reusable building blocks of code in a program. Perhaps the most important design principle in computer science is KISS (Keep It Simple, Stupid). I prefer Keep It Stupid Simple. Pure functions are stupid simple in the best possible way.
 
+我推荐你使用纯函数。如果用纯函数实现一个程序的需求是可行的，你应该优先使用它们。纯函数接收参数并返回参数。他们是程序中最简单的可复用代码块。KISS(Keep It Simple, Stupid) 原则可能是计算机科学中最重要的设计原则。纯函数保持简单直白就是最好的方式。
+
 Pure functions have many beneficial properties, and form the foundation of **functional programming**. Pure functions are completely independent of outside state, and as such, they are immune to entire classes of bugs that have to do with shared mutable state. Their independent nature also makes them great candidates for parallel processing across many CPUs, and across entire distributed computing clusters, which makes them essential for many types of scientific and resource-intensive computing tasks.
+
+纯函数有许多有益的特性，并且也是**函数式编程**的基础。纯函数完全不依赖于外部状态，they are immune to entire classes of bugs that have to do with shared mutable state。
 
 Pure functions are also extremely independent — easy to move around, refactor, and reorganize in your code, making your programs more flexible and adaptable to future changes.
 
