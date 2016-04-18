@@ -136,17 +136,30 @@ Pure functions have many beneficial properties, and form the foundation of **fun
 
 Pure functions are also extremely independent — easy to move around, refactor, and reorganize in your code, making your programs more flexible and adaptable to future changes.
 
+纯函数同样是非常独立的，在你的代码中容易对其进行移动、重构和重组，使你的应用程序更灵活的适应未来的变化。
+
 #### The Trouble with Shared State
+#### 共享状态的问题
 
 Several years ago I was working on an app that allowed users to search a database for musical artists and load the artist's music playlist into a web player. This was around the time Google Instant landed, which displays instant search results as you type your search query. AJAX-powered autocomplete was suddenly all the rage.
 
+几年前我做过一款应用，该应该用允许用户从歌手的数据中搜索并且把歌手的歌单加载到网页播放器上。也就是大概在 Google Instant （当你键入搜索语句的时候会实时展示搜索的结果）推出的那段时间，基于 Ajax 的自动补齐功能突然间变得非常流行。
+
 The only problem was that users often type faster than an API autocomplete search response can be returned, which caused some strange bugs. It would trigger race conditions, where newer suggestions would be replaced by outdated suggestions.
+
+唯一的问题就是当用户打字的速度快于 API 自动补齐搜索响应的时候，会产生一些奇怪的 Bug。它会触发竞态条件，where newer suggestions would be replaced by outdated suggestions.
 
 Why did that happen? Because each AJAX success handler was given access to directly update the suggestion list that was displayed to users. The slowest AJAX request would always win the user's attention by blindly replacing results, even when those replaced results may have been newer.
 
+为什么会产生这些问题呢？因为每个 Ajax 处理器有权直接更新展示给用户看的建议列表。最慢的 Ajax 请求总是会盲目地替换结果引起用户的注意，即使这些结果是比较新的。
+
 To fix the problem, I created a suggestion manager — a single source of truth to manage the state of the query suggestions. It was aware of a currently pending AJAX request, and when the user typed something new, the pending AJAX request would be canceled before a new request was issued, so only a single response handler at a time would ever be able to trigger a UI state update.
 
+为了修复这个问题，我创建了一个建议管理器（单一可信来源）来管理查询建议的状态。它会注意到当前待定的 Ajax 请求，当用户键入新的语句时，待定的请求会在一个新的请求产生之前被取消掉，所以，在同一时间内只会有一个响应处理器来触发 UI 状态的更新。
+
 Any sort of asynchronous operation or concurrency could cause similar race conditions. Race conditions happen if output is dependent on the sequence of uncontrollable events (such as network, device latency, user input, randomness, etc…). In fact, if you're using shared state and that state is reliant on sequences which vary depending on indeterministic factors, for all intents and purposes, the output is impossible to predict, and that means it's impossible to properly test or fully understand. As Martin Odersky (creator of Scala) puts it:
+
+任何类型的异步或并发操作都会引起类似的竞态条件。如果输出依赖于不可控事件序列（例如网络、设备延迟、用户输入、随机性等等）会导致竞态条件。
 
 > non-determinism = parallel processing + mutable state
 
