@@ -165,6 +165,8 @@ Any sort of asynchronous operation or concurrency could cause similar race condi
 
 Program determinism is usually a desirable property in computing. Maybe you think you're OK because JS runs in a single thread, and as such, is immune to parallel processing concerns, but as the AJAX example demonstrates, a single threaded JS engine does not imply that there is no concurrency. On the contrary, there are many sources of concurrency in JavaScript. API I/O, event listeners, web workers, iframes, and timeouts can all introduce indeterminism into your program. Combine that with shared state, and you've got a recipe for bugs.
 
+程序决定论在计算中通常是一个理想的性质。也许你觉得没有问题因为 JS 以单线程的方式运行的，
+
 Pure functions can help you avoid those kinds of bugs.
 
 纯函数可以帮你避免这些问题。
