@@ -159,13 +159,15 @@ To fix the problem, I created a suggestion manager — a single source of tr
 
 Any sort of asynchronous operation or concurrency could cause similar race conditions. Race conditions happen if output is dependent on the sequence of uncontrollable events (such as network, device latency, user input, randomness, etc…). In fact, if you're using shared state and that state is reliant on sequences which vary depending on indeterministic factors, for all intents and purposes, the output is impossible to predict, and that means it's impossible to properly test or fully understand. As Martin Odersky (creator of Scala) puts it:
 
-任何类型的异步或并发操作都会引起类似的竞态条件。如果输出依赖于不可控事件序列（例如网络、设备延迟、用户输入、随机性等等）会导致竞态条件。
+任何类型的异步或并发操作都会引起类似的竞态条件。如果输出依赖于不可控事件序列（例如网络、设备延迟、用户输入、随机性等等）会导致竞态条件。实际上，如果你正在使用共享状态并且该状态依赖sequences which vary depending on indeterministic factors，从所有的这些来看，输出是无法预测的，也就意味着不可能正确地测试和完全理解。
 
 > non-determinism = parallel processing + mutable state
 
 Program determinism is usually a desirable property in computing. Maybe you think you're OK because JS runs in a single thread, and as such, is immune to parallel processing concerns, but as the AJAX example demonstrates, a single threaded JS engine does not imply that there is no concurrency. On the contrary, there are many sources of concurrency in JavaScript. API I/O, event listeners, web workers, iframes, and timeouts can all introduce indeterminism into your program. Combine that with shared state, and you've got a recipe for bugs.
 
 Pure functions can help you avoid those kinds of bugs.
+
+纯函数可以帮你避免这些问题。
 
 #### Given the Same Input, Always Return the Same Output
 
@@ -337,3 +339,4 @@ Did you enjoy the free lesson? Get lots more lessons like this one:
 **Eric Elliott** is the author of "Programming JavaScript Applications" (O'Reilly), and "Learn Universal JavaScript App Development with Node & React". He has contributed to software experiences for **Adobe Systems, Zumba Fitness, The Wall Street Journal, ESPN, BBC**, and top recording artists including **Usher, Frank Ocean, Metallica**, and many more.
 
 He spends most of his time in the San Francisco Bay Area with the most beautiful woman in the world.
+
