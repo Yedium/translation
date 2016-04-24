@@ -7,16 +7,25 @@ tags:		['Web', 'DOM']
 ---
 
 # All You Need to Know About Web Rendering
+# 关于网页渲染你所需要知道的一些内容
 
 Hi there! Today I want to highlight the topic of web rendering. I’m pretty sure that there are a lot of articles about that but most of them are so different … so let’s get it all together.
 
+大家好！今天我想强调一下关于网页渲染的话题。我敢说现在肯定有很多关于网页渲染的文章，不过这些文章中大多数都不尽相同，所以让我们把这些内容理清楚来吧。
+
 This practice is rather useful during the front-end development because, as you can understand, markup, styles and scripts are very important for that so you are ought to know some lifehacks.
+
+这个实践对前端工程师来说是非常有用的，因为就像你明白标记语言、样式和脚本对前端来说非常重要一样，所以你应该知道一些关于网页渲染的技巧。
 
 This article is not aimed at describing the accurate mechanics of work browsers, but rather on understanding its general principles. By the way, different browsers have different algorithms so we can’t be sure to collect all of them.
 
+这篇文章的目的不是去描述浏览器的具体工作原理，而是去理解它的一些基本原则。顺便说一下，对于不同的浏览器有不同的算法，所以我们不能确保能收集到所以的技巧。
+
 ## The Rendering Process
+## 渲染的过程
 
 So let’s consider the sequence of browsers work step by step:
+让我们一步一步的来思考浏览器的工作顺序：
 
 - Building DOM (Document Object Model) from received HTML.
 - Downloading and detecting styles, which formed by CSSOM (CSS Object Model).
@@ -24,15 +33,29 @@ So let’s consider the sequence of browsers work step by step:
 - For each render tree element, calculated the position on the page — building layout. Browsers use method (flow), which in most cases enough only one pass for all elements (more passes required for tables).
 - Painting all stuff in the browser.
 
+- 基于接收到的 HML 来构建 DOM （文档对象模型）。
+- 下载并根据 CSSOM （CSS 对象模型） 来检测样式。
+- 基于 DOM 和 CSSOM （Webkit 叫渲染器或渲染对象，Gecko 称之为框架结构）构建**渲染树**。不过它并不会显示类似 `<head>` 或这样式含有 `display: none;` 的这些隐藏元素。每一行的文字都应该被定义为不同的渲染器。每个渲染对象包含各自的 DOM 对象并且设置样式。所以渲染树可视化的描述了 DOM 的结构。
+- 对于每一个渲染树元素都会在页面上被计算出位置以构建布局。Browsers use method (flow), which in most cases enough only one pass for all elements (more passes required for tables).
+- 在浏览器中绘制所有的元素。
+
 During the interaction between user and page (by some of the scripts) this process can be done again.
 
+在用户（或者一些脚本）与页面交互期间，这一过程可能会重复执行。
+
 ## Repaint
+## 重绘
 
 If object style was changed but it’s size and position weren’t changed (for example, background-color, border-color, visibility) then browser just paints this one again (it is also called **restyling**).
 
+如果元素的样式（比如，`background-color`, `border-color`, `visibility`）被改变了，但是其大小和位置没有被改变，则浏览器只会单单重绘这个元素。
+
 ## Reflow
+## 渲染
 
 If the structure of our document was touched then browsers do reflow (or to **relayout**). The main occasions of this are:
+
+如果文档的结构变动了，则浏览器会重新渲染整个页面。以下情况会发生重新渲染：
 
 - DOM manipulations (resizing, removing, adding something).
 - The text was changed.
@@ -41,6 +64,14 @@ If the structure of our document was touched then browsers do reflow (or to **re
 - Class attribute manipulations.
 - Browser window changes: resizing, scrolling.
 - Pseudo-class activation (for example, :hover).
+
+- DOM 操作（改变大小、移动或增加元素）。
+- 文字被改变。
+- CSS 属性被改变。
+- 添加了新的样式表或移除老的样式表。
+- 元素的 class 的值被改变。
+- 浏览器窗口发生改变：大小或滚动。
+- 伪类被激活（比如 `:hover`）。
 
 Usually, browsers try to localize repaint and reflow on the side of changed object. For example, if you change a size of absolute or fixed positioned object then it will affect only this object and it’s children, but if you edit another one with static position then the whole page would be reflowed.
 
