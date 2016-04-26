@@ -1,12 +1,14 @@
 ---
 layout:		post
-title:		'How-to-get-started-with-JavaScript'
+title:		'How to get started with JavaScript'
 excerpt:	'Hey friends, after receiving a big response to my last article, I have decided to write another one to address questions that were put forward to me repeatedly.'
 categories:	['translation']
 tags:		['JavaScript', 'How To', 'Web Development']
 ---
 
-### How-to-get-started-with-JavaScript
+### How to get started with JavaScript
+
+![How to get started with JavaScript](./img/1.png)
 
 Hey friends, after receiving a big response to [my last article](https://medium.com/@PatrykZabielski/how-to-make-multi-layered-parallax-illustration-with-css-javascript-2b56883c3f27), I have decided to write another one to address questions that were put forward to me repeatedly. “How did you learn Javascript? What are your resources? Can you recommend something?” so in this short article I will introduce you to some of the resources that will kickstart your Javascript adventure and few tips that I learned on the way that hopefully will help you have a head start and so you don’t repeat my mistakes..
 
