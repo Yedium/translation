@@ -7,10 +7,13 @@ tags:		['JavaScript', 'How To', 'Web Development']
 ---
 
 ### How to get started with JavaScript
+### 如何开始学习 JavaScript
 
 ![How to get started with JavaScript](./img/1.png)
 
 Hey friends, after receiving a big response to [my last article](https://medium.com/@PatrykZabielski/how-to-make-multi-layered-parallax-illustration-with-css-javascript-2b56883c3f27), I have decided to write another one to address questions that were put forward to me repeatedly. “How did you learn Javascript? What are your resources? Can you recommend something?” so in this short article I will introduce you to some of the resources that will kickstart your Javascript adventure and few tips that I learned on the way that hopefully will help you have a head start and so you don’t repeat my mistakes..
+
+嗨，朋友们，在 [我的上一篇文章](https://medium.com/@PatrykZabielski/how-to-make-multi-layered-parallax-illustration-with-css-javascript-2b56883c3f27) 收到巨大反响后，我决定要写另外一片来回答我反复提出的那些问题。你是如何学习 JavaScript 的？你的资源是什么？你有什么建议吗？所以在这片文章中我将向你介绍一些可以让你开始学习 JavaScript 的资源和一些我在学习过程中总结的一些经验，希望能帮助刚开始学习 JavaScript 的你有个好的起步，而不要重蹈我的覆辙。
 
 A small disclaimer: I am not a Javascript expert. There’s still lots for me to learn. The article below outlines just one of the paths for learning Javascript.
 
