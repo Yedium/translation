@@ -1,6 +1,6 @@
 ---
 layout:		post
-title:		'All-You-Need-To-Know-About-Web-Rendering?'
+title:		'All You Need to Know About Web Rendering?'
 excerpt:	'This practice is rather useful during the front-end development because, as you can understand, markup, styles and scripts are very important for that so you are ought to know some lifehacks.'
 categories:	['translation']
 tags:		['Web', 'DOM']
